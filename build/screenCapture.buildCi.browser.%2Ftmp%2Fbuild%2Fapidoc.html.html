@@ -1,0 +1,219 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/jonschlinkert/grunt-prettify">grunt-prettify (v0.4.0)</a>
+</h1>
+<h4>HTML prettifier with options to format HTML according to your own preferences.</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.grunt-prettify">module grunt-prettify</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.grunt-prettify.grunt-prettify">
+            function <span class="apidocSignatureSpan"></span>grunt-prettify
+            <span class="apidocSignatureSpan">(grunt)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.grunt-prettify.toString">
+            function <span class="apidocSignatureSpan">grunt-prettify.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.grunt-prettify" id="apidoc.module.grunt-prettify">module grunt-prettify</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.grunt-prettify.grunt-prettify" id="apidoc.element.grunt-prettify.grunt-prettify">
+        function <span class="apidocSignatureSpan"></span>grunt-prettify
+        <span class="apidocSignatureSpan">(grunt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">grunt-prettify = function (grunt) {
+
+  // Project configuration.
+  grunt.initConfig({
+
+    // Lint.
+    jshint: {
+      options: {jshintrc: '.jshintrc'},
+      all: [
+        'Gruntfile.js',
+        'tasks/*.js'
+      ]
+    },
+
+    // Build HTML for tests.
+    assemble: {
+      options: {
+        flatten: true,
+        assets: 'test/actual/assets',
+        data: 'test/fixtures/data/*.{json,yml}',
+        partials: 'test/fixtures/includes/*.hbs',
+        layoutdir: 'test/fixtures/layouts',
+        layout: 'default.hbs'
+      },
+      pages: {
+        src: ['test/fixtures/pages/*.{hbs,md}'],
+        dest: 'test/actual/ugly/'
+      }
+    },
+
+    prettify: {
+      options: {
+        ocd: true
+      },
+      // Prettify a single file
+      single: {
+        src: 'test/actual/ugly/index.html',
+        dest: 'test/actual/single/index.html'
+      },
+      // Use defaults
+      defaults: {
+        files: [
+          {expand: true, cwd: 'test/actual/ugly/', src: ['*.html'], dest: 'test/actual/defaults/', ext: '.html'}
+        ]
+      },
+      // Use .jsbeautifyrc
+      jsbeautifyrc: {
+        options: {
+          config: '.jsbeautifyrc'
+        },
+        files: [
+          {expand: true, cwd: 'test/actual/ugly/', src: ['*.html'], dest: 'test/actual/jsbeautifyrc/', ext: '.html'}
+        ]
+      },
+      // Indent by 6 spaces
+      custom_indentation: {
+        options: {
+          config: '.jsbeautifyrc'
+        },
+        src: 'test/actual/ugly/index.html',
+        dest: 'test/actual/single/index.html'
+      },
+      // Use condense option to reduce extra newlines
+      condense: {
+        files: [
+          {expand: true, cwd: 'test/actual/ugly/', src: ['*.html'], dest: 'test/actual/custom_indentation/', ext: '.html'}
+        ]
+      },
+      // Specify a number to padcomments
+      padcomments: {
+        options: {
+          padcomments: 3
+        },
+        files: [
+          {expand: true, cwd: 'test/actual/ugly/', src: ['*.html'], dest: 'test/actual/padcomments/', ext: '.html'}
+        ]
+      }
+    },
+
+    // Before generating any new files,
+    // remove files from previous build.
+    clean: {
+      dest: {
+        src: ['test/actual/**/*.html']
+      }
+    }
+  });
+
+  // Actually load this plugin.
+  grunt.loadTasks('tasks');
+
+  // Load npm plugins to provide necessary tasks.
+  grunt.loadNpmTasks('assemble');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-readme');
+
+  grunt.registerTask('test', ['jshint', 'prettify']);
+
+  // By default, lint and run all tests.
+  grunt.registerTask('default', ['jshint', 'clean', 'assemble', 'prettify', 'readme']);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.grunt-prettify.toString" id="apidoc.element.grunt-prettify.toString">
+        function <span class="apidocSignatureSpan">grunt-prettify.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
