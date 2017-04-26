@@ -1,4 +1,7 @@
-# api documentation for  [grunt-prettify (v0.4.0)](https://github.com/jonschlinkert/grunt-prettify)  [![npm package](https://img.shields.io/npm/v/npmdoc-grunt-prettify.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-grunt-prettify) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-grunt-prettify.svg)](https://travis-ci.org/npmdoc/node-npmdoc-grunt-prettify)
+# npmdoc-grunt-prettify
+
+#### basic api documentation for  [grunt-prettify (v0.4.0)](https://github.com/jonschlinkert/grunt-prettify)  [![npm package](https://img.shields.io/npm/v/npmdoc-grunt-prettify.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-grunt-prettify) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-grunt-prettify.svg)](https://travis-ci.org/npmdoc/node-npmdoc-grunt-prettify)
+
 #### HTML prettifier with options to format HTML according to your own preferences.
 
 [![NPM](https://nodei.co/npm/grunt-prettify.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/grunt-prettify)
@@ -87,7 +90,8 @@
     "scripts": {
         "test": "grunt test"
     },
-    "version": "0.4.0"
+    "version": "0.4.0",
+    "bin": {}
 }
 ```
 
